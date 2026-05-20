@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zamin Ali — Web Developer & AI Enthusiast</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;transition:background-color 0.4s,color 0.4s,border-color 0.4s;}
+html{scroll-behavior:smooth;}
+
+/* DARK THEME */
+[data-theme="dark"]{
+  --bg:#0f0e17;--bg2:#1a1a2e;--bg3:#16213e;--card:#1e1e35;
+  --text:#e6f1ff;--muted:#8892b0;--border:#2a2a4a;
+  --nav-bg:rgba(15,14,23,0.95);
+}
+/* LIGHT THEME */
+[data-theme="light"]{
+  --bg:#f7f8ff;--bg2:#ffffff;--bg3:#f0f0ff;--card:#ffffff;
+  --text:#1a1a2e;--muted:#666;--border:#ede8ff;
+  --nav-bg:rgba(247,248,255,0.95);
+}
+
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 4rem;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,#667eea,#f093fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-right{display:flex;align-items:center;gap:2rem;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;letter-spacing:0.5px;transition:color 0.3s;}
+.nav-links a:hover{color:#f093fb;}
+
+/* THEME TOGGLE */
+.theme-toggle{
+  width:52px;height:28px;border-radius:20px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  position:relative;transition:all 0.3s;flex-shrink:0;
+}
+.theme-toggle-ball{
+  position:absolute;top:3px;left:3px;
+  width:22px;height:22px;border-radius:50%;
+  background:#fff;transition:transform 0.3s;
+  display:flex;align-items:center;justify-content:center;font-size:12px;
+}
+[data-theme="light"] .theme-toggle-ball{transform:translateX(24px);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:0 4rem;background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);position:relative;overflow:hidden;}
+.hero-c1{position:absolute;top:-80px;right:-80px;width:350px;height:350px;border-radius:50%;background:rgba(255,255,255,0.07);}
+.hero-c2{position:absolute;bottom:-120px;left:5%;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.05);}
+.hero-c3{position:absolute;top:40%;right:20%;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.06);}
+.hero-content{max-width:650px;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:12px;padding:5px 16px;border-radius:20px;margin-bottom:1.8rem;letter-spacing:0.5px;font-weight:500;}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,7vw,5.5rem);font-weight:900;color:#fff;line-height:1.0;margin-bottom:0.2rem;text-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.hero-name-gold{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,7vw,5.5rem);font-weight:900;line-height:1.05;margin-bottom:1.2rem;background:linear-gradient(90deg,#ffd700,#fffde7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-role{font-size:15px;color:rgba(255,255,255,0.8);margin-bottom:0.8rem;}
+.hero-role strong{color:#fff;font-weight:600;}
+.hero-desc{font-size:14px;color:rgba(255,255,255,0.6);max-width:500px;line-height:1.9;margin-bottom:2.2rem;}
+.hero-desc em{color:#ffd700;font-style:normal;font-weight:600;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-w{padding:12px 28px;background:#fff;color:#764ba2;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:transform 0.2s,opacity 0.2s;text-decoration:none;display:inline-block;}
+.btn-w:hover{transform:translateY(-2px);opacity:0.92;}
+.btn-o{padding:12px 28px;background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background 0.2s,transform 0.2s;text-decoration:none;display:inline-block;}
+.btn-o:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px);}
+
+/* SECTIONS */
+section{padding:5rem 4rem;}
+.sec-alt{background:var(--bg2);}
+.pill{display:inline-block;background:linear-gradient(135deg,#667eea,#f093fb);color:#fff;font-size:10px;font-weight:700;padding:4px 14px;border-radius:20px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1.2rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--text);margin-bottom:2rem;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:1.5rem;align-items:start;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;box-shadow:0 2px 16px rgba(0,0,0,0.1);}
+.about-text{font-size:14px;color:var(--muted);line-height:2.0;}
+.about-text strong{color:var(--text);font-weight:600;}
+.about-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#667eea,#f093fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.stat{background:var(--bg3);border-radius:12px;padding:1.2rem;text-align:center;border:1px solid var(--border);}
+.stat-val{font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,#667eea,#f093fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-lbl{font-size:11px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:0.5px;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;}
+.skill{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:1.2rem 1rem;text-align:center;transition:all 0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+.skill:hover{border-color:#764ba2;transform:translateY(-5px);box-shadow:0 10px 24px rgba(102,126,234,0.2);}
+.skill-icon{font-size:1.8rem;margin-bottom:8px;}
+.skill-name{font-size:13px;font-weight:600;color:var(--text);}
+.skill-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;}
+.proj{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.1);}
+.proj-bar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#667eea,#f093fb);}
+.proj:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(102,126,234,0.2);border-color:#764ba2;}
+.badge-live{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,0.15);color:#22c55e;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;border:1px solid rgba(34,197,94,0.3);}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:blink 1.4s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.badge-soon{display:inline-block;background:rgba(255,255,255,0.08);color:var(--muted);font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;border:1px solid var(--border);}
+.proj-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.tag{background:rgba(124,77,255,0.12);color:#a78bfa;font-size:11px;padding:3px 10px;border-radius:5px;font-weight:600;border:1px solid rgba(124,77,255,0.2);}
+.proj-links{display:flex;gap:14px;}
+.proj-link{color:var(--muted);font-size:12px;text-decoration:none;display:flex;align-items:center;gap:4px;transition:color 0.2s;font-weight:500;}
+.proj-link:hover{color:#f093fb;}
+
+/* CONTACT */
+.contact-card{background:linear-gradient(135deg,#0f0c29,#1a1a4e);border-radius:16px;padding:3rem;text-align:center;position:relative;overflow:hidden;border:1px solid var(--border);}
+.contact-card::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:rgba(240,147,251,0.08);}
+.contact-card::after{content:'';position:absolute;bottom:-60px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(102,126,234,0.08);}
+.contact-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:8px;position:relative;z-index:1;}
+.contact-sub{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:2rem;max-width:400px;margin-left:auto;margin-right:auto;position:relative;z-index:1;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:1.8rem;position:relative;z-index:1;}
+.citem{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.2rem;text-decoration:none;transition:background 0.2s;}
+.citem:hover{background:rgba(255,255,255,0.12);}
+.clbl{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+.cval{font-size:12px;color:#fff;font-weight:500;word-break:break-all;}
+
+footer{text-align:center;padding:2rem 4rem;border-top:1px solid var(--border);color:var(--muted);font-size:13px;}
+footer span{background:linear-gradient(135deg,#667eea,#f093fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:600;}
+
+/* CHATBOT */
+.chat-wrap{position:fixed;bottom:24px;right:24px;z-index:999;font-family:'Outfit',sans-serif;}
+.chat-btn{
+  display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  border:none;cursor:pointer;color:#fff;
+  padding:10px 18px;border-radius:30px;
+  box-shadow:0 4px 20px rgba(102,126,234,0.45);
+  transition:transform 0.2s;font-family:'Outfit',sans-serif;
+}
+.chat-btn:hover{transform:translateY(-2px);}
+.chat-btn-icon{font-size:18px;}
+.chat-btn-text{font-size:12px;font-weight:600;white-space:nowrap;}
+.chat-box{display:none;width:320px;border-radius:16px;margin-bottom:12px;box-shadow:0 8px 40px rgba(0,0,0,0.4);overflow:hidden;flex-direction:column;}
+[data-theme="dark"] .chat-box{background:#1a1a2e;border:1px solid #2a2a4a;}
+[data-theme="light"] .chat-box{background:#fff;border:1px solid #ede8ff;}
+.chat-box.open{display:flex;}
+.chat-header{background:linear-gradient(135deg,#667eea,#764ba2);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;}
+.chat-hd-left{display:flex;align-items:center;gap:10px;}
+.chat-av{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.chat-hname{color:#fff;font-size:13px;font-weight:600;}
+.chat-hstatus{color:rgba(255,255,255,0.7);font-size:10px;display:flex;align-items:center;gap:4px;margin-top:2px;}
+.chat-sdot{width:5px;height:5px;border-radius:50%;background:#4ade80;}
+.chat-close{color:rgba(255,255,255,0.8);background:none;border:none;cursor:pointer;font-size:18px;}
+.chat-msgs{height:260px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+[data-theme="dark"] .chat-msgs{background:#0f0e17;}
+[data-theme="light"] .chat-msgs{background:#fafafa;}
+.msg-bot{display:flex;align-items:flex-start;gap:8px;}
+.msg-bot-bub{border-radius:12px 12px 12px 3px;padding:9px 12px;font-size:12px;line-height:1.65;max-width:230px;}
+[data-theme="dark"] .msg-bot-bub{background:#1e1e35;border:1px solid #2a2a4a;color:#ccd6f6;}
+[data-theme="light"] .msg-bot-bub{background:#fff;border:1px solid #ede8ff;color:#444;}
+.msg-user{display:flex;justify-content:flex-end;}
+.msg-user-bub{background:linear-gradient(135deg,#667eea,#764ba2);border-radius:12px 12px 3px 12px;padding:9px 12px;font-size:12px;color:#fff;line-height:1.65;max-width:210px;}
+.chat-typing span{width:6px;height:6px;border-radius:50%;background:#764ba2;display:inline-block;margin:0 1px;animation:typ 1.2s infinite;}
+.chat-typing span:nth-child(2){animation-delay:0.2s;}
+.chat-typing span:nth-child(3){animation-delay:0.4s;}
+@keyframes typ{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+.chat-quick{padding:8px 12px 4px;display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid var(--border);}
+[data-theme="dark"] .chat-quick{background:#1a1a2e;}
+[data-theme="light"] .chat-quick{background:#fafafa;}
+.chat-q{background:rgba(124,77,255,0.12);color:#a78bfa;font-size:10px;padding:4px 10px;border-radius:20px;cursor:pointer;border:1px solid rgba(124,77,255,0.2);font-family:'Outfit',sans-serif;transition:background 0.2s;}
+.chat-q:hover{background:rgba(124,77,255,0.25);}
+.chat-input-area{padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:8px;}
+[data-theme="dark"] .chat-input-area{background:#1a1a2e;}
+[data-theme="light"] .chat-input-area{background:#fff;}
+.chat-input{flex:1;border:1px solid var(--border);border-radius:20px;padding:7px 12px;font-family:'Outfit',sans-serif;font-size:12px;outline:none;background:var(--bg);color:var(--text);}
+.chat-input:focus{border-color:#764ba2;}
+.chat-send{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);border:none;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.ai-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(102,126,234,0.12);color:#a78bfa;font-size:9px;padding:2px 7px;border-radius:10px;font-weight:600;margin-top:4px;}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{padding:6rem 1.5rem 3rem;}
+  section{padding:3rem 1.5rem;}
+  .about-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  footer{padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Zamin Ali</div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+      <div class="theme-toggle-ball" id="toggleBall">🌙</div>
+    </button>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-c1"></div><div class="hero-c2"></div><div class="hero-c3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">💻 Web Developer & AI Enthusiast · BSCS Student</div>
+    <h1 class="hero-name">Zamin</h1>
+    <h1 class="hero-name-gold">Ali</h1>
+    <p class="hero-role">Building <strong>fast, modern websites</strong> with AI & clean code</p>
+    <p class="hero-desc">I turn your business idea into a <em>beautiful live website</em> — delivering in days what others take weeks to finish.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-w">View My Work</a>
+      <a href="#contact" class="btn-o">Hire Me</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="pill">About me</div>
+  <h2 class="sec-title">Who I Am</h2>
+  <div class="about-grid">
+    <div class="card">
+      <p class="about-text">Hi! I'm <span class="about-name">Zamin Ali</span>, a passionate Web Developer pursuing my <strong>Bachelor's in Computer Science (BSCS)</strong> from FUAST, Islamabad.<br><br>
+      I build clean, professional websites by combining <strong>HTML, CSS, JavaScript & Python</strong> with cutting-edge <strong>AI tools</strong> — making web development faster, smarter, and affordable for every business.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-val">AI</div><div class="stat-lbl">Powered</div></div>
+      <div class="stat"><div class="stat-val">3x</div><div class="stat-lbl">Faster</div></div>
+      <div class="stat"><div class="stat-val">BSCS</div><div class="stat-lbl">Student</div></div>
+      <div class="stat"><div class="stat-val">100%</div><div class="stat-lbl">Committed</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="sec-alt">
+  <div class="pill">Skills & Tools</div>
+  <h2 class="sec-title">What I Know</h2>
+  <div class="skills-grid">
+    <div class="skill"><div class="skill-icon">🌐</div><div class="skill-name">HTML & CSS</div><div class="skill-sub">Layouts & styling</div></div>
+    <div class="skill"><div class="skill-icon">⚡</div><div class="skill-name">JavaScript</div><div class="skill-sub">Interactivity</div></div>
+    <div class="skill"><div class="skill-icon">🐍</div><div class="skill-name">Python</div><div class="skill-sub">Scripting & AI</div></div>
+    <div class="skill"><div class="skill-icon">🗄️</div><div class="skill-name">Database</div><div class="skill-sub">MySQL & basics</div></div>
+    <div class="skill"><div class="skill-icon">🤖</div><div class="skill-name">AI Tools</div><div class="skill-sub">Claude, ChatGPT</div></div>
+    <div class="skill"><div class="skill-icon">🎨</div><div class="skill-name">Framer AI</div><div class="skill-sub">No-code design</div></div>
+    <div class="skill"><div class="skill-icon">🐙</div><div class="skill-name">GitHub</div><div class="skill-sub">Version control</div></div>
+    <div class="skill"><div class="skill-icon">📱</div><div class="skill-name">Responsive</div><div class="skill-sub">Mobile friendly</div></div>
+    <div class="skill"><div class="skill-icon">✍️</div><div class="skill-name">Content Writing</div><div class="skill-sub">Blogs & copy</div></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="pill">Projects</div>
+  <h2 class="sec-title">What I've Built</h2>
+  <div class="projects-grid">
+    <div class="proj">
+      <div class="proj-bar"></div>
+      <div class="badge-live"><div class="live-dot"></div> Live</div>
+      <div class="proj-title">Delicious Flavor</div>
+      <p class="proj-desc">Modern fully responsive restaurant website — menu showcase, location info, and contact form.</p>
+      <div class="proj-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+      <div class="proj-links">
+        <a href="https://zaminali33.github.io/delicious-flavor-website/" target="_blank" class="proj-link"><i class="ti ti-external-link"></i> Live Demo</a>
+        <a href="https://github.com/zaminali33" target="_blank" class="proj-link"><i class="ti ti-brand-github"></i> GitHub</a>
+      </div>
+    </div>
+    <div class="proj">
+      <div class="proj-bar"></div>
+      <div class="badge-live"><div class="live-dot"></div> Live</div>
+      <div class="proj-title">Spice Symphony - Islamabad</div>
+      <p class="proj-desc">Modern responsive restaurant website — signature menu, ambiance gallery, location info, and reservation contact form.</p>
+      <div class="proj-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">AI Design</span></div>
+      <div class="proj-links">
+        <a href="https://zaminali33.github.io/spice-symphony-website-/" target="_blank" class="proj-link"><i class="ti ti-external-link"></i> Live Demo</a>
+        <a href="https://github.com/zaminali33" target="_blank" class="proj-link"><i class="ti ti-brand-github"></i> GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="sec-alt">
+  <div class="pill">Contact</div>
+  <h2 class="sec-title">Let's Work Together</h2>
+  <div class="contact-card">
+    <div class="contact-title">Let's build something together ✨</div>
+    <p class="contact-sub">Need a website for your business? Fast, beautiful, and affordable. Let's talk!</p>
+    <div class="contact-grid">
+      <a href="mailto:zaminn.alii.33@gmail.com" class="citem">
+        <div class="clbl">📧 Email</div>
+        <div class="cval">zaminn.alii.33@gmail.com</div>
+      </a>
+      <a href="https://wa.me/923554467376" target="_blank" class="citem">
+        <div class="clbl">💬 WhatsApp</div>
+        <div class="cval">+92 355 4467376</div>
+      </a>
+      <a href="https://github.com/zaminali33" target="_blank" class="citem">
+        <div class="clbl">🐙 GitHub</div>
+        <div class="cval">github.com/zaminali33</div>
+      </a>
+    </div>
+    <a href="mailto:zaminn.alii.33@gmail.com" class="btn-w" style="position:relative;z-index:1;">Send Me a Message</a>
+  </div>
+</section>
+
+<footer>
+  <p>Built with love by <span>Zamin Ali</span> — Web Developer & AI Enthusiast</p>
+  <p style="margin-top:6px;">BSCS Student · Islamabad, Pakistan</p>
+</footer>
+
+<!-- CHATBOT -->
+<div class="chat-wrap">
+  <div class="chat-box" id="chatBox">
+    <div class="chat-header">
+      <div class="chat-hd-left">
+        <div class="chat-av">🤖</div>
+        <div>
+          <div class="chat-hname">Ask about Zamin</div>
+          <div class="chat-hstatus"><div class="chat-sdot"></div> Always here to help</div>
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-msgs" id="chatMsgs">
+      <div class="msg-bot">
+        <div style="width:26px;height:26px;font-size:13px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🤖</div>
+        <div>
+          <div class="msg-bot-bub">Hi! I'm Zamin's assistant. Ask me anything about him! 👋</div>
+          <div class="ai-badge">⚡ Smart Assistant</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-quick" id="quickBtns">
+      <button class="chat-q" onclick="ask('who')">👤 Who is Zamin?</button>
+      <button class="chat-q" onclick="ask('skills')">🛠 His Skills</button>
+      <button class="chat-q" onclick="ask('projects')">🗂 Projects</button>
+      <button class="chat-q" onclick="ask('education')">🎓 Education</button>
+      <button class="chat-q" onclick="ask('languages')">🗣 Languages</button>
+      <button class="chat-q" onclick="ask('contact')">📞 Contact</button>
+      <button class="chat-q" onclick="ask('ai')">🤖 AI & Coding</button>
+    </div>
+    <div class="chat-input-area">
+      <input class="chat-input" id="chatInput" type="text" placeholder="Ask about Zamin..." onkeydown="if(event.key==='Enter')sendMsg()">
+      <button class="chat-send" onclick="sendMsg()"><i class="ti ti-send" style="font-size:14px"></i></button>
+    </div>
+  </div>
+  <button class="chat-btn" onclick="toggleChat()" id="chatBtnEl">
+    <span class="chat-btn-icon">💬</span>
+    <span class="chat-btn-text">Ask about Zamin</span>
+  </button>
+</div>
+
+<script>
+// THEME TOGGLE
+function toggleTheme(){
+  var html=document.documentElement;
+  var ball=document.getElementById('toggleBall');
+  if(html.getAttribute('data-theme')==='dark'){
+    html.setAttribute('data-theme','light');
+    ball.textContent='☀️';
+  } else {
+    html.setAttribute('data-theme','dark');
+    ball.textContent='🌙';
+  }
+}
+
+// CHATBOT ANSWERS
+var answers = {
+  who: "Zamin Ali is a passionate Web Developer and AI Enthusiast from Islamabad, Pakistan. He is a dedicated BSCS student at FUAST who loves building modern websites using both coding and AI tools. He is a strong, fast learner who is always exploring new technologies! 🚀",
+
+  skills: "Zamin is skilled in:\n🌐 HTML & CSS — beautiful layouts\n⚡ JavaScript — interactive websites\n🐍 Python — scripting & AI\n🗄️ Database — MySQL basics\n🤖 AI Tools — Claude, ChatGPT, Framer AI\n🐙 GitHub — version control\n📱 Responsive Design — mobile friendly\n✍️ Content Writing — blogs & copy",
+
+  projects: "Zamin has built these projects:\n\n🍽️ Delicious Flavor (LIVE)\nA modern responsive restaurant website.\n👉 zaminali33.github.io/delicious-flavor-website/\n\n🌶️ Spice Symphony - Islamabad (LIVE)\nA restaurant website with menu, gallery & reservation form.\n👉 zaminali33.github.io/spice-symphony-website-/\n\nMore projects coming soon! 💪",
+
+  education: "Zamin's educational journey:\n\n🏫 School: Scholar School (completed)\n📚 FSc: Degree College Skardu (completed)\n🎓 Currently: BSCS at FUAST, Islamabad\n\nHe has been an excellent student throughout his academic career! ⭐",
+
+  languages: "Zamin speaks 3 languages:\n🗣️ Balti — mother tongue\n🇵🇰 Urdu — fluent\n🇬🇧 English — fluent\n\nThis helps him communicate with clients from diverse backgrounds! 😊",
+
+  contact: "You can reach Zamin here:\n\n💬 WhatsApp: +92 355 4467376\n📧 Email: zaminn.alii.33@gmail.com\n🐙 GitHub: github.com/zaminali33\n\nFeel free to reach out — he responds quickly! 🚀",
+
+  ai: "Zamin has a deep passion for AI and coding! 🤖\n\nHe actively uses AI tools like Claude, ChatGPT, and Framer AI to build websites faster and smarter. He is a strong, self-driven learner who is always exploring the latest AI technologies and how to apply them in real-world projects.\n\nHis goal is to combine coding skills with AI to create amazing digital experiences! 💡"
+};
+
+var keywords = {
+  who:['who','zamin','about','tell me','introduce','person','kaun'],
+  skills:['skill','know','can do','expertise','technology','tech','html','css','python','javascript'],
+  projects:['project','built','made','website','work','portfolio','delicious','spice','symphony'],
+  education:['education','study','school','college','degree','bscs','fuast','skardu','student','fsc'],
+  languages:['language','speak','balti','urdu','english','tongue'],
+  contact:['contact','reach','whatsapp','email','github','hire','message'],
+  ai:['ai','artificial','intelligence','chatgpt','claude','machine','coding','interest','passion','learn']
+};
+
+function getAnswer(msg){
+  var m = msg.toLowerCase();
+  for(var key in keywords){
+    for(var i=0;i<keywords[key].length;i++){
+      if(m.includes(keywords[key][i])) return answers[key];
+    }
+  }
+  return "I can answer questions about Zamin's background, skills, projects, education, languages, and contact info. Try asking something specific! 😊\n\nOr contact him directly:\n💬 WhatsApp: +92 355 4467376\n📧 zaminn.alii.33@gmail.com";
+}
+
+function toggleChat(){
+  var box=document.getElementById('chatBox');
+  var btn=document.getElementById('chatBtnEl');
+  if(box.classList.contains('open')){
+    box.classList.remove('open');
+    btn.innerHTML='<span class="chat-btn-icon">💬</span><span class="chat-btn-text">Ask about Zamin</span>';
+  } else {
+    box.classList.add('open');
+    btn.innerHTML='<span class="chat-btn-icon">✕</span><span class="chat-btn-text">Close</span>';
+  }
+}
+
+function botAv(){return '<div style="width:26px;height:26px;font-size:13px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🤖</div>';}
+
+function addMsg(text,isUser){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');
+  if(isUser){
+    div.className='msg-user';
+    div.innerHTML='<div class="msg-user-bub">'+text+'</div>';
+  } else {
+    div.className='msg-bot';
+    div.innerHTML=botAv()+'<div><div class="msg-bot-bub">'+text.replace(/\n/g,'<br>')+'</div><div class="ai-badge">⚡ Smart Assistant</div></div>';
+  }
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function showTyping(){
+  var msgs=document.getElementById('chatMsgs');
+  var div=document.createElement('div');
+  div.className='msg-bot';div.id='typingEl';
+  div.innerHTML=botAv()+'<div class="msg-bot-bub"><div class="chat-typing"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function removeTyping(){var t=document.getElementById('typingEl');if(t)t.remove();}
+
+function ask(key){
+  document.getElementById('quickBtns').style.display='none';
+  var questions={who:'Who is Zamin Ali?',skills:'What are his skills?',projects:'What projects has he built?',education:'Tell me about his education',languages:'What languages does he speak?',contact:'How can I contact Zamin?',ai:'Tell me about his interest in AI and coding'};
+  addMsg(questions[key],true);
+  showTyping();
+  setTimeout(function(){removeTyping();addMsg(answers[key],false);},700);
+}
+
+function sendMsg(){
+  var input=document.getElementById('chatInput');
+  var msg=input.value.trim();
+  if(!msg)return;
+  input.value='';
+  document.getElementById('quickBtns').style.display='none';
+  addMsg(msg,true);
+  showTyping();
+  setTimeout(function(){removeTyping();addMsg(getAnswer(msg),false);},700);
+}
+</script>
+</body>
+</html>
