@@ -3,6 +3,7 @@
 Personal portfolio website of **Zamin Ali**, a passionate Web Developer & AI Enthusiast and BSCS student from Islamabad, Pakistan.
 
 ## 🌐 Live Website
+https://zaminali33.github.io/Zamin-Portfolio-Website/
 
 
 ## 👤 About Me
