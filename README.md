@@ -3,7 +3,7 @@
 Personal portfolio website of **Zamin Ali**, a passionate Web Developer & AI Enthusiast and BSCS student from Islamabad, Pakistan.
 
 ## 🌐 Live Website
-[zaminali33.github.io/portfolio](https://zaminali33.github.io/portfolio)
+
 
 ## 👤 About Me
 I'm **Zamin Ali**, a BSCS student at FUAST Islamabad. I build modern, responsive websites using HTML, CSS, JavaScript, Python, and AI tools. I deliver fast and affordable websites for businesses using the power of AI.
